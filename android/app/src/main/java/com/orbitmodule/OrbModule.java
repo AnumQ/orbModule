@@ -35,7 +35,7 @@ public class OrbModule extends ReactContextBaseJavaModule {
     // So here we will call this OrbitSDK so that we can access it through React.NativeModules.OrbitSDK in JavaScript.
     @Override
     public String getName() {
-        return "OrbitSDK";
+        return "OrbModuleSDK";
     }
 
     @Override

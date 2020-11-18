@@ -25,13 +25,13 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import ToastExample from './ToastExample';
+import OrbModuleSDK from './OrbModule';
 
 const App: () => React$Node = () => {
-  ToastExample.show('Awesome', ToastExample.SHORT);
+  OrbModuleSDK.show('Awesome', OrbModuleSDK.SHORT);
 
   const testCallback = () => {
-    ToastExample.testCallback(
+    OrbModuleSDK.testCallback(
       // eslint-disable-next-line prettier/prettier
       success => {
         console.log(success);
@@ -45,16 +45,16 @@ const App: () => React$Node = () => {
   const testPromise = async () => {
     try {
       // Map to object of your choosing.
-      var {label} = await ToastExample.testPromise();
-      console.log('Result ' + label);
+      var {label} = await OrbModuleSDK.testPromise();
+      console.log('Result from Promise ' + label);
     } catch (e) {
       console.error(e);
     }
   };
 
-  console.log('here I am');
-
+  testCallback();
   testPromise();
+
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -63,8 +63,6 @@ const App: () => React$Node = () => {
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
           {/* <Header /> */}
-          <Text>Test</Text>
-          <Text>{testCallback()}</Text>
           <Text>Hey</Text>
           {/* {global.HermesInternal == null ? null : (
             <View style={styles.engine}>

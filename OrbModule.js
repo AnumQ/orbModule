@@ -7,4 +7,4 @@
  *    ToastExample.LONG
  */
 import {NativeModules} from 'react-native';
-module.exports = NativeModules.OrbitSDK;
+module.exports = NativeModules.OrbModuleSDK;
