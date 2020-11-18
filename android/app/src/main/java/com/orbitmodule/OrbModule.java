@@ -19,13 +19,13 @@ import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.*;
 
-public class ToastModule extends ReactContextBaseJavaModule {
+public class OrbModule extends ReactContextBaseJavaModule {
     private static ReactApplicationContext reactContext;
 
     private static final String DURATION_SHORT_KEY = "SHORT";
     private static final String DURATION_LONG_KEY = "LONG";
 
-    ToastModule(ReactApplicationContext context) {
+    OrbModule(ReactApplicationContext context) {
         super(context);
         reactContext = context;
     }
