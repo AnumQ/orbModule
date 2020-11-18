@@ -4,7 +4,9 @@ package com.orbitmodule;
 
 import android.widget.Toast;
 
+import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.NativeModule;
+import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -12,6 +14,10 @@ import com.facebook.react.bridge.ReactMethod;
 
 import java.util.Map;
 import java.util.HashMap;
+
+import com.facebook.react.bridge.Callback;
+import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.uimanager.*;
 
 public class ToastModule extends ReactContextBaseJavaModule {
     private static ReactApplicationContext reactContext;
@@ -43,5 +49,32 @@ public class ToastModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void show(String message, int duration) {
         Toast.makeText(getReactApplicationContext(), message, duration).show();
+    }
+
+    @ReactMethod
+    public String getMessage(String message, int duration) {
+        return message;
+    }
+
+    @ReactMethod
+    public void testCallback(
+            Callback successCallback,
+            Callback errorCallback ) {
+        try {
+            successCallback.invoke("test Callback Success");
+        } catch (IllegalViewOperationException e) {
+            errorCallback.invoke(e.getMessage());
+        }
+    }
+
+    @ReactMethod
+    public void testPromise(Promise promise) {
+        try {
+            WritableMap map = Arguments.createMap();
+            map.putBoolean("label", true);
+            promise.resolve(map);
+        } catch (IllegalViewOperationException e) {
+            promise.reject("Error", e.getMessage());
+        }
     }
 }

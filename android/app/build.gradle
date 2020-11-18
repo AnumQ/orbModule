@@ -1,5 +1,6 @@
 apply plugin: "com.android.application"
 
+// Dont remove this - react-script run-android wont work
 import com.android.build.OutputFile
 
 /**

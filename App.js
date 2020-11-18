@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
@@ -29,6 +30,31 @@ import ToastExample from './ToastExample';
 const App: () => React$Node = () => {
   ToastExample.show('Awesome', ToastExample.SHORT);
 
+  const testCallback = () => {
+    ToastExample.testCallback(
+      // eslint-disable-next-line prettier/prettier
+      success => {
+        console.log(success);
+      },
+      error => {
+        console.log(error);
+      },
+    );
+  };
+
+  const testPromise = async () => {
+    try {
+      // Map to object of your choosing.
+      var {label} = await ToastExample.testPromise();
+      console.log('Result ' + label);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  console.log('here I am');
+
+  testPromise();
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -38,7 +64,8 @@ const App: () => React$Node = () => {
           style={styles.scrollView}>
           {/* <Header /> */}
           <Text>Test</Text>
-          <Text>{ToastExample.SHORT}</Text>
+          <Text>{testCallback()}</Text>
+          <Text>Hey</Text>
           {/* {global.HermesInternal == null ? null : (
             <View style={styles.engine}>
               <Text style={styles.footer}>Engine: What Engine</Text>
